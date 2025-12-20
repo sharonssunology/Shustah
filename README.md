@@ -1,0 +1,2 @@
+# Shustah
+Shustah Card Oracle
