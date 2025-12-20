@@ -1,1 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Sample Card One",
+    "text": "This is the interpretation for card one.",
+    "tags": ["test", "sample"],
+    "imageUrl": ""
+  },
+  {
+    "id": 2,
+    "title": "Sample Card Two",
+    "text": "This is the interpretation for card two.",
+    "tags": ["test"],
+    "imageUrl": ""
+  }
+]
 
