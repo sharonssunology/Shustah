@@ -1,40 +1,36 @@
-const fs = require("fs");
-const path = require("path");
+// api/oracle.js (CommonJS)
+
+const SHUS_SYMBOLS = require("../data/shus-symbols.js");
+const SHUS_TEXTS = require("../data/shus-texts.js");
 
 module.exports = (req, res) => {
   try {
-    // Load deck JSON from /data/deck.json
-    const deckPath = path.join(process.cwd(), "data", "deck.json");
-    const raw = fs.readFileSync(deckPath, "utf8");
-    const deck = JSON.parse(raw);
+    const degree = Math.floor(Math.random() * 360) + 1;
 
-    if (!Array.isArray(deck) || deck.length === 0) {
-      return res.status(500).json({ error: "Deck is empty or invalid." });
+    const symbol = SHUS_SYMBOLS[card];
+    const text = SHUS_TEXTS[card];
+
+    if (!symbol || !text) {
+      return res.status(500).json({
+        error: `Missing data for card ${card}`
+      });
     }
 
-    // Optional: draw by id if ?id=#
-    const idParam = req.query.id;
-    if (idParam) {
-      const idNum = Number(idParam);
-      const found = deck.find((c) => Number(c.id) === idNum);
-      if (!found) return res.status(404).json({ error: "Card not found." });
-      return res.status(200).json(found);
-    }
+    const imageUrl = `/shustah-images/${degree}.jpg`;
 
-    // Otherwise random draw
-    const pick = deck[Math.floor(Math.random() * deck.length)];
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-    // Return in a format similar to your existing oracle
     return res.status(200).json({
-      id: pick.id,
-      symbol: pick.title,     // keep naming flexible
-      text: pick.text,
-      tags: pick.tags || [],
-      imageUrl: pick.imageUrl || ""
+      card,
+      symbol,
+      text,
+      imageUrl
     });
-  } catch (e) {
-    console.error("Oracle error:", e);
-    return res.status(500).json({ error: "Server error loading deck." });
+
+  } catch (err) {
+    console.error("Oracle API error:", err);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
