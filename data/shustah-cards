@@ -1,4 +1,4 @@
-module.exports = {
+export default = {
 1: "Aries",
 2: "Taurus",
 3: "Gemini",
