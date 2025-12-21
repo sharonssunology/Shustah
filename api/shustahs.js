@@ -9,7 +9,7 @@ export default function handler(req, res) {
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  const degree = parseInt(req.query.degree);
+  const card = parseInt(req.query.card);
 
   if (!card || card < 1 || card > 70) {
     return res.status(400).json({ error: "Invalid card." });
