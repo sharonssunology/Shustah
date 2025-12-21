@@ -1,7 +1,7 @@
 // api/oracle.js (CommonJS)
 
-const SHUSTAH-CARDS = require("../data/shustah-cards.js");
-const SHUSTAH-TEXTS = require("../data/shustah-texts.js");
+const SHUSTAH_CARDS = require("../data/shustah-cards.js");
+const SHUSTAH_TEXTS = require("../data/shustah-texts.js");
 
 module.exports = (req, res) => {
   try {
