@@ -1,13 +1,13 @@
 // api/oracle.js (CommonJS)
 
-const SHUS_SYMBOLS = require("../data/shus-symbols.js");
+const SHUS_CARDS = require("../data/shus-cards.js");
 const SHUS_TEXTS = require("../data/shus-texts.js");
 
 module.exports = (req, res) => {
   try {
     const degree = Math.floor(Math.random() * 360) + 1;
 
-    const symbol = SHUS_SYMBOLS[card];
+    const symbol = SHUS_CARDS[card];
     const text = SHUS_TEXTS[card];
 
     if (!symbol || !text) {
