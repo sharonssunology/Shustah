@@ -51,7 +51,7 @@ export const SHUSTAH = {
 50: "The Serpent",
 51: "The Weeping Woman",
 52: "The Sacred Mushroom",
-53: "The Spring Page",
+53: "The Spying Page",
 54: "The Pale Horse",
 55: "Winged Winter",
 56: "The Lord of Authority",
